@@ -2,14 +2,14 @@
     include_once('helpers/url.php');
     include_once('gerar_pdf.php');
     
-
-
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        //print_r($_POST['email']);
-        gerar_pdf();
+        $uploadfile =  'C:/laragon/www/gerador-pdf-php/assets/image/temp/'. basename($_FILES['file']['name']);
+        move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile);
+        //rename($_FILES['tmp_name']  ,$BASE_URL.'image/temp/imagem.png');
+        $path_file = $BASE_URL . 'assets/image/temp/'. basename($_FILES['file']['name']);
+        //print_r(trim($path_file));
+        gerar_pdf(trim($path_file));
     }
-    
-
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
 </head>
 <body>
     <main class='form-container'>
-        <form action="index.php" method='post'>
+        <form action="index.php" method='post' enctype="multipart/form-data">
             <h2> Form </h2>
 
             <div class="mb-3">
@@ -60,21 +60,53 @@
                 <div class="form-check">
                     <input class="form-check-input" name="checkb[]" type="checkbox" value="check_box_1" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
-                        Default checkbox
+                        Option 1
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" name="checkb[]" type="checkbox" value="check_box_2" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Option 2
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" name="checkb[]" type="checkbox" value="check_box_3" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Option 3
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" name="checkb[]" type="checkbox" value="check_box_4" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Option 4
                     </label>
                 </div>
                 
                 <div class="form-check">
-                    <input class="form-check-input" name="checkb[]" type="checkbox" value="check_box_2" id="flexCheckChecked" checked>
+                    <input class="form-check-input" name="checkb[]" type="checkbox" value="check_box_5" id="flexCheckChecked" checked>
                     <label class="form-check-label" for="flexCheckChecked">
-                        Checked checkbox
+                        Option 5
                     </label>
                 </div>
             </div>
 
             <div class="mb-3">
+                <label for="exampleColorInput" class="form-label">Color picker</label>
+                <input type="color" name="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+            </div>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Default file input example</label>
+                <input class="form-control" type="file" name="file" id="formFile">
+            </div>
+
+            <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Generate PDF</button>
             </div>
+
         </form>
     </main>
 </body>
