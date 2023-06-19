@@ -1,10 +1,13 @@
 <?php
 
+
 require 'vendor/autoload.php';
 use Dompdf\Dompdf;
+use chillerlan\QRCode\{QRCode, QROptions};
 
 function gerar_pdf($path_file){
         $dompdf = new Dompdf(['enable_remote' => true]);
+        $qr_code = (new QRCode)->render($_POST['link-qr-code']);
 
         $dados = '<!DOCTYPE html>';
         $dados .= '<html lang="pt-br">';
@@ -63,6 +66,13 @@ function gerar_pdf($path_file){
         $dados .=   '<div class="n-label"> Imagem </div>';
         $dados .=   '<div class="n-box">';
         $dados .=       '<img src="'. $path_file . '" width="300" height="300">';
+        $dados .=   '</div>';
+        $dados .= '</div>';
+
+        $dados .= '<div class="input-container">';
+        $dados .=   '<div class="n-label"> QRCode </div>';
+        $dados .=   '<div class="n-box">';
+        $dados .=       '<img src="'. $qr_code . '" width="100" height="100">';
         $dados .=   '</div>';
         $dados .= '</div>';
 

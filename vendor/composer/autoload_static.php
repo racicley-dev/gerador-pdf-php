@@ -7,10 +7,19 @@ namespace Composer\Autoload;
 class ComposerStaticInita93271dd13b797bc42be7fa85eb30ecb
 {
     public static $prefixLengthsPsr4 = array (
+        'c' => 
+        array (
+            'chillerlan\\Settings\\' => 20,
+            'chillerlan\\QRCode\\' => 18,
+        ),
         'S' => 
         array (
             'Svg\\' => 4,
             'Sabberworm\\CSS\\' => 15,
+        ),
+        'R' => 
+        array (
+            'Racic\\GeradorPdfPhp\\' => 20,
         ),
         'M' => 
         array (
@@ -27,6 +36,14 @@ class ComposerStaticInita93271dd13b797bc42be7fa85eb30ecb
     );
 
     public static $prefixDirsPsr4 = array (
+        'chillerlan\\Settings\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-settings-container/src',
+        ),
+        'chillerlan\\QRCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
+        ),
         'Svg\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
@@ -34,6 +51,10 @@ class ComposerStaticInita93271dd13b797bc42be7fa85eb30ecb
         'Sabberworm\\CSS\\' => 
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
+        'Racic\\GeradorPdfPhp\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Masterminds\\' => 
         array (

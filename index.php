@@ -104,6 +104,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Link - QRCode</label>
+                <input class="form-control" type="text" placeholder="Default input" name='link-qr-code' aria-label="default input example">
+            </div>
+
+            <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Generate PDF</button>
             </div>
 
